@@ -1,0 +1,36 @@
+﻿benchmarks:
+  - id: humaneval
+    display_name: HumanEval
+    framework: opencompass
+    metric: pass@1
+    enabled: true
+  - id: mbpp
+    display_name: MBPP
+    framework: opencompass
+    metric: pass@1
+    enabled: true
+  - id: humaneval_infilling
+    display_name: HumanEval Infilling
+    framework: custom
+    metric: pass@1
+    enabled: true
+  - id: ds1000
+    display_name: DS-1000
+    framework: custom
+    metric: pass@1
+    enabled: true
+  - id: swebench
+    display_name: SWE-bench
+    framework: swebench
+    metric: resolved_rate
+    enabled: true
+  - id: evalplus_humaneval
+    display_name: EvalPlus HumanEval+
+    framework: evalplus
+    metric: pass@1
+    enabled: true
+  - id: evalplus_mbpp
+    display_name: EvalPlus MBPP+
+    framework: evalplus
+    metric: pass@1
+    enabled: true

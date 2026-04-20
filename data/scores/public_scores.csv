@@ -1,0 +1,9 @@
+﻿benchmark,metric,model_family,model_name,score,score_unit,source_name,source_url,source_date,notes
+HumanEval,pass@1,Qwen,Qwen2.5-Coder-32B-Instruct,0.9227,ratio,BigCode Models Leaderboard,https://huggingface.co/spaces/bigcode/bigcode-models-leaderboard/blob/main/data/code_eval_board.csv,2026-04-20,HumanEval-Python
+HumanEval,pass@1,DeepSeek,DeepSeek-Coder-V2-Instruct,0.8864,ratio,BigCode Models Leaderboard,https://huggingface.co/spaces/bigcode/bigcode-models-leaderboard/blob/main/data/code_eval_board.csv,2026-04-20,HumanEval-Python
+HumanEval,pass@1,StarCoder2,StarCoder2-15B,0.5504,ratio,BigCode Models Leaderboard,https://huggingface.co/spaces/bigcode/bigcode-models-leaderboard/blob/main/data/code_eval_board.csv,2026-04-20,HumanEval-Python
+SWE-bench,resolved_rate,Qwen,Qwen2.5-Coder-32B-Instruct,,,,SWE-bench Leaderboard,https://www.swebench.com/,2026-04-20,Pending scripted ingest from swe-bench.github.io data
+EvalPlus HumanEval+,pass@1,Qwen,Qwen2.5-Coder-32B-Instruct,,,,EvalPlus Leaderboard,https://evalplus.github.io/leaderboard.html,2026-04-20,Pending scripted ingest
+MBPP,pass@1,Gemma,Gemma-2-27B-IT,,,,Model reports / leaderboard,TBD,2026-04-20,Placeholder
+HumanEval Infilling,pass@1,Llama,CodeLlama-70B-Instruct,,,,Paper/model reports,TBD,2026-04-20,Placeholder
+DS-1000,pass@1,DeepSeek,DeepSeek-Coder-V2-Instruct,,,,Paper/model reports,TBD,2026-04-20,Placeholder

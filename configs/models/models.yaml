@@ -1,0 +1,19 @@
+﻿models:
+  - family: Qwen
+    name: Qwen2.5-Coder-32B-Instruct
+    provider: Alibaba
+  - family: DeepSeek
+    name: DeepSeek-Coder-V2-Instruct
+    provider: DeepSeek
+  - family: Seed
+    name: Seed-Coder-8B-Instruct
+    provider: ByteDance
+  - family: Llama
+    name: CodeLlama-70B-Instruct
+    provider: Meta
+  - family: StarCoder2
+    name: StarCoder2-15B
+    provider: BigCode
+  - family: Gemma
+    name: Gemma-2-27B-IT
+    provider: Google

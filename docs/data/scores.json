@@ -1,0 +1,117 @@
+{
+  "generated_from": "E:\\本周工作\\2026年\\0420\\llm-code-benchmark-hub\\data\\scores\\public_scores.csv",
+  "rows": [
+    {
+      "benchmark": "HumanEval",
+      "metric": "pass@1",
+      "model_family": "Qwen",
+      "model_name": "Qwen2.5-Coder-32B-Instruct",
+      "score": 0.9227,
+      "score_unit": "ratio",
+      "source_name": "BigCode Models Leaderboard",
+      "source_url": "https://huggingface.co/spaces/bigcode/bigcode-models-leaderboard/blob/main/data/code_eval_board.csv",
+      "source_date": "2026-04-20",
+      "notes": "HumanEval-Python"
+    },
+    {
+      "benchmark": "HumanEval",
+      "metric": "pass@1",
+      "model_family": "DeepSeek",
+      "model_name": "DeepSeek-Coder-V2-Instruct",
+      "score": 0.8864,
+      "score_unit": "ratio",
+      "source_name": "BigCode Models Leaderboard",
+      "source_url": "https://huggingface.co/spaces/bigcode/bigcode-models-leaderboard/blob/main/data/code_eval_board.csv",
+      "source_date": "2026-04-20",
+      "notes": "HumanEval-Python"
+    },
+    {
+      "benchmark": "HumanEval",
+      "metric": "pass@1",
+      "model_family": "StarCoder2",
+      "model_name": "StarCoder2-15B",
+      "score": 0.5504,
+      "score_unit": "ratio",
+      "source_name": "BigCode Models Leaderboard",
+      "source_url": "https://huggingface.co/spaces/bigcode/bigcode-models-leaderboard/blob/main/data/code_eval_board.csv",
+      "source_date": "2026-04-20",
+      "notes": "HumanEval-Python"
+    },
+    {
+      "benchmark": "SWE-bench",
+      "metric": "resolved_rate",
+      "model_family": "Qwen",
+      "model_name": "Qwen2.5-Coder-32B-Instruct",
+      "score": null,
+      "score_unit": "",
+      "source_name": "",
+      "source_url": "SWE-bench Leaderboard",
+      "source_date": "https://www.swebench.com/",
+      "notes": "2026-04-20",
+      "null": [
+        "Pending scripted ingest from swe-bench.github.io data"
+      ]
+    },
+    {
+      "benchmark": "EvalPlus HumanEval+",
+      "metric": "pass@1",
+      "model_family": "Qwen",
+      "model_name": "Qwen2.5-Coder-32B-Instruct",
+      "score": null,
+      "score_unit": "",
+      "source_name": "",
+      "source_url": "EvalPlus Leaderboard",
+      "source_date": "https://evalplus.github.io/leaderboard.html",
+      "notes": "2026-04-20",
+      "null": [
+        "Pending scripted ingest"
+      ]
+    },
+    {
+      "benchmark": "MBPP",
+      "metric": "pass@1",
+      "model_family": "Gemma",
+      "model_name": "Gemma-2-27B-IT",
+      "score": null,
+      "score_unit": "",
+      "source_name": "",
+      "source_url": "Model reports / leaderboard",
+      "source_date": "TBD",
+      "notes": "2026-04-20",
+      "null": [
+        "Placeholder"
+      ]
+    },
+    {
+      "benchmark": "HumanEval Infilling",
+      "metric": "pass@1",
+      "model_family": "Llama",
+      "model_name": "CodeLlama-70B-Instruct",
+      "score": null,
+      "score_unit": "",
+      "source_name": "",
+      "source_url": "Paper/model reports",
+      "source_date": "TBD",
+      "notes": "2026-04-20",
+      "null": [
+        "Placeholder"
+      ]
+    },
+    {
+      "benchmark": "DS-1000",
+      "metric": "pass@1",
+      "model_family": "DeepSeek",
+      "model_name": "DeepSeek-Coder-V2-Instruct",
+      "score": null,
+      "score_unit": "",
+      "source_name": "",
+      "source_url": "Paper/model reports",
+      "source_date": "TBD",
+      "notes": "2026-04-20",
+      "null": [
+        "Placeholder"
+      ]
+    }
+  ],
+  "count": 8
+}
