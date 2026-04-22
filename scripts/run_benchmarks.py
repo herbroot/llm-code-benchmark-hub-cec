@@ -97,7 +97,17 @@ def main() -> None:
 
     for bench in benchmarks:
         for model in models:
-            cmd = command_for(bench, model, api_url=args.api_url, api_key=args.api_key, timeout=args.timeout)
+            effective_api_url = args.api_url if args.api_url else model.get('api_url', '')
+            effective_api_key = args.api_key if args.api_key else model.get('api_key', '')
+            effective_timeout = args.timeout if args.timeout is not None else model.get('timeout', None)
+
+            cmd = command_for(
+                bench,
+                model,
+                api_url=effective_api_url,
+                api_key=effective_api_key,
+                timeout=effective_timeout,
+            )
             cmd_str = ' '.join(cmd)
             print(f"[{bench['id']}] [{model['name']}] {cmd_str}")
 

@@ -1,51 +1,51 @@
-﻿# ByteBench Hub
+﻿# ByteBench Hub（中文说明）
 
-[中文文档](./README_zh.md)
+[English README](./README.md)
 
-A practical benchmark hub for LLM code evaluation.
+这是一个用于代码能力评测的 LLM Benchmark 项目。
 
-## Supported Benchmarks (Current Project State)
+## 当前项目支持状态
 
-- `humaneval` (via EvalScope)
-- `mbpp` (via EvalScope + sandbox)
-- `humaneval_plus` (EvalPlus benchmark in EvalScope)
-- `mbpp_plus` (EvalPlus benchmark in EvalScope + sandbox)
-- `humaneval_infilling` (planned, custom adapter placeholder)
-- `ds1000` (planned, custom adapter placeholder)
-- `swebench` (planned in this repo; can be integrated later)
+- `humaneval`（EvalScope）
+- `mbpp`（EvalScope + sandbox）
+- `humaneval_plus`（EvalPlus 对应数据集，走 EvalScope）
+- `mbpp_plus`（EvalPlus 对应数据集，走 EvalScope + sandbox）
+- `humaneval_infilling`（规划中，当前是自定义 adapter 占位）
+- `ds1000`（规划中，当前是自定义 adapter 占位）
+- `swebench`（本仓库后续集成，当前不作为首批）
 
-## Multi-Model Support
+## 是否支持多模型同时测试
 
-Yes. You can run:
+支持。可以实现：
 
-- One model against multiple benchmarks
-- Multiple models against one benchmark
-- Multiple models against multiple benchmarks
+- 单模型 + 多 benchmark
+- 多模型 + 单 benchmark
+- 多模型 + 多 benchmark
 
-This is handled by `scripts/run_benchmarks.py` + `configs/models/models.yaml`.
+由 `scripts/run_benchmarks.py` 和 `configs/models/models.yaml` 实现。
 
-## Repository Structure
+## 目录说明
 
-- `configs/benchmarks/benchmarks.yaml`: benchmark registry and routing
-- `configs/models/models.yaml`: model list used by unified runner
-- `scripts/run_benchmarks.py`: unified command dispatcher
-- `adapters/`: custom benchmark adapters (`ds1000`, `humaneval_infilling` placeholders)
-- `docs/`: GitHub Pages scoreboard
-- `data/scores/`: public score table source
+- `configs/benchmarks/benchmarks.yaml`：benchmark 路由配置
+- `configs/models/models.yaml`：模型列表配置
+- `scripts/run_benchmarks.py`：统一调度入口
+- `adapters/`：自定义 benchmark 适配器（当前有占位）
+- `docs/`：GitHub Pages 页面
+- `data/scores/`：公开分数源数据
 
-## Setup
+## 安装依赖
 
 ```bash
 pip install -r requirements-eval.txt
 ```
 
-This installs EvalScope with sandbox support by default.
+该文件已包含 `evalscope[sandbox]`，不需要再单独安装一次。
 
-## Configure Models
+## 配置模型
 
-Edit `configs/models/models.yaml`.
+编辑 `configs/models/models.yaml`。
 
-Example:
+示例：
 
 ```yaml
 models:
@@ -61,10 +61,10 @@ models:
     api_key: EMPTY
 ```
 
-`name` must match your served model name in your API service.
-`api_url`/`api_key`/`timeout` are optional per-model fields for multi-endpoint runs.
+其中 `name` 必须和你服务端 `--served-model-name` 对齐。
+`api_url`/`api_key`/`timeout` 也可以按模型单独配置，适用于多模型多端口。
 
-## Start Model Service (Example: vLLM)
+## 启动模型服务（vLLM 示例）
 
 ```bash
 CUDA_VISIBLE_DEVICES=4,5,6,7 vllm serve "/data/model/Qwen/Qwen3___5-122B-A10B-FP8/" \
@@ -84,79 +84,79 @@ CUDA_VISIBLE_DEVICES=4,5,6,7 vllm serve "/data/model/Qwen/Qwen3___5-122B-A10B-FP
   --language-model-only
 ```
 
-## Run Benchmarks
+## 评测命令
 
-### A) Direct EvalScope CLI (single model)
+### 方式 A：直接用 EvalScope（单模型）
 
-Run one benchmark:
+跑单个数据集：
 
 ```bash
 evalscope eval --eval-type openai_api --model Qwen3.5-122B-A10B-FP8 --datasets humaneval --api-url http://127.0.0.1:24444/v1 --api-key EMPTY --limit 1 --eval-batch-size 1
 ```
 
-Run multiple benchmarks:
+跑多个数据集：
 
 ```bash
 evalscope eval --eval-type openai_api --model Qwen3.5-122B-A10B-FP8 --datasets humaneval humaneval_plus --api-url http://127.0.0.1:24444/v1 --api-key EMPTY --limit 1 --eval-batch-size 1
 ```
 
-For MBPP/MBPP+ enable sandbox:
+`mbpp/mbpp_plus` 需要 sandbox：
 
 ```bash
 evalscope eval --eval-type openai_api --model Qwen3.5-122B-A10B-FP8 --datasets mbpp mbpp_plus --api-url http://127.0.0.1:24444/v1 --api-key EMPTY --limit 1 --use-sandbox --sandbox-type docker --eval-batch-size 1
 ```
 
-### B) Unified Runner (single or multiple models)
+### 方式 B：用统一入口脚本（支持多模型）
 
-Dry-run command generation:
+先看将要执行的命令：
 
 ```bash
 python scripts/run_benchmarks.py --dry-run --benchmarks "humaneval,mbpp"
 ```
 
-One model, multiple benchmarks:
+单模型 + 多 benchmark：
 
 ```bash
 python scripts/run_benchmarks.py --benchmarks "humaneval,mbpp,evalplus_humaneval,evalplus_mbpp" --model-names "Qwen3.5-122B-A10B-FP8" --api-url "http://127.0.0.1:24444/v1" --api-key "EMPTY"
 ```
 
-Multiple models, one benchmark:
+多模型 + 单 benchmark：
 
 ```bash
 python scripts/run_benchmarks.py --benchmarks "humaneval" --model-names "Qwen3.5-122B-A10B-FP8,DeepSeek-Coder-V2-Instruct" --api-url "http://127.0.0.1:24444/v1" --api-key "EMPTY"
 ```
 
-Multiple models, multiple benchmarks:
+多模型 + 多 benchmark：
 
 ```bash
 python scripts/run_benchmarks.py --benchmarks "humaneval,evalplus_humaneval" --model-names "Qwen3.5-122B-A10B-FP8,DeepSeek-Coder-V2-Instruct" --api-url "http://127.0.0.1:24444/v1" --api-key "EMPTY"
 ```
 
-If `api_url` is set per model in `configs/models/models.yaml`, it overrides global `--api-url`.
+如果在 `configs/models/models.yaml` 里给模型单独设置了 `api_url`，会优先使用模型自己的地址（覆盖全局 `--api-url`）。
 
-## Outputs
+## 输出结果
 
-Each run writes to `outputs/<timestamp>/`:
+每次运行都会写到 `outputs/<timestamp>/`：
 
 - `logs/eval_log.log`
 - `reports/<model>/<benchmark>.json`
 - `reports/report.html`
 
-Quick check:
+快速查看最近结果：
 
 ```bash
 ls -lt outputs/*/reports/*/*.json | head
 ```
 
-## Build GitHub Pages Data
+## 页面数据构建
 
 ```bash
 python scripts/build_scores_json.py
 ```
 
-This refreshes `docs/data/scores.json` used by the page under `docs/`.
+会刷新 `docs/data/scores.json`，供 `docs/` 页面展示。
 
-## Notes
+## 说明
 
-- `humaneval_infilling` and `ds1000` are placeholders in this repo until custom adapters are implemented.
-- `swebench` can be integrated later due to heavier environment/runtime requirements.
+- `humaneval_infilling` 和 `ds1000` 目前在本仓库中还是占位 adapter，需要后续实现。
+- `swebench` 由于环境和运行成本较重，建议放在后续阶段集成。
