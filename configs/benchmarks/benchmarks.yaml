@@ -1,12 +1,14 @@
 ﻿benchmarks:
   - id: humaneval
     display_name: HumanEval
-    framework: opencompass
+    framework: evalscope
+    evalscope_task: humaneval
     metric: pass@1
     enabled: true
   - id: mbpp
     display_name: MBPP
-    framework: opencompass
+    framework: evalscope
+    evalscope_task: mbpp
     metric: pass@1
     enabled: true
   - id: humaneval_infilling

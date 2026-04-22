@@ -1,0 +1,7 @@
+﻿# Example runtime settings for API-based evaluation.
+# Fill this file with your server endpoint and credential env vars.
+provider: openai_compatible
+api_base: http://127.0.0.1:8000/v1
+api_key_env: OPENAI_API_KEY
+request_timeout: 120
+max_concurrency: 8

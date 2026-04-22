@@ -1,0 +1,4 @@
+﻿pyyaml>=6.0
+evalscope
+evalplus
+swebench
